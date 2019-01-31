@@ -1,0 +1,125 @@
+$background: #DECCCC
+$menubackground: #FFFFFF
+$itemactive: #C1666B
+$textcolor: #1E1E1E
+$headingfont: "Yeseva One", cursive
+$contentfont: "Merriweather Sans", sans-serif
+
+*, *::before, *::after
+    box-sizing: border-box
+
+html, body
+    margin: 0
+    padding: 0
+
+body
+    background-color: $background
+    color: $textcolor
+
+.navigation
+    position: fixed
+    left: 0
+    z-index: 10
+    width: 60px
+    height: 100vh
+    background: transparent
+    ul
+        width: 100%
+        height: 100% 
+        list-style: none
+        padding: 0
+        margin: 0
+        display: flex
+        flex-direction: column
+        justify-content: space-evenly
+        &::before
+            content: ""
+            display: block
+            position: absolute
+            right: 0
+            width: 1px
+            height: 100vh
+            background: #ACACAC
+        li
+            position: relative
+            display: block
+            padding: 0
+            margin: 0
+            width: 100%
+            height: calc((100vh / 5) - 40px)
+            cursor: pointer
+            border-right: 1px solid darken(#ACACAC, 35%)
+            span.number
+                position: absolute
+                top: 50%
+                right: 15px
+                font-size: 20px
+                writing-mode: vertical-rl
+                transform: rotate(180deg) translateY(50%)
+                color: transparentize($textcolor, 0.4)
+                transition: 300ms all ease-in-out
+            span.readbar
+                display: block
+                position: absolute
+                width: 4px
+                height: 0%
+                top: 0
+                right: -2px
+                background-color: $itemactive
+                transition: 900ms all ease
+            &.visible
+                span.number
+                    font-size: 24px
+                    color: $textcolor
+                span.readbar
+                    height: 100%
+            &:hover
+                span.number
+                    font-size: 24px
+                    color: $textcolor
+
+.container
+    position: relative
+    section
+        margin: 0 auto
+        padding-bottom: 200px
+        width: 100%
+        height: auto
+        min-height: 100vh
+        &:nth-of-type(2n)
+            background: lighten($background, 10%)
+
+.innercontent
+    width: 60%
+    max-width: 650px
+    margin: 0 auto
+    .title
+        font-size: 3rem
+        position: relative
+        line-height: 1.5
+        margin-top: 0
+        padding: 100px 0 0 0
+        text-align: center
+        font-family: $headingfont
+        color: $itemactive
+    p
+        font-family: $contentfont
+        font-size: 1.125rem
+        line-height: 1.5
+
+footer
+    position: relative
+    width: 100%
+    height: 100px
+    padding: 10px 0 
+    background: #DCDCDC
+    text-align: center
+    a
+        text-decoration: none
+        p
+            display: inline-block
+            border-bottom: 1px dashed $itemactive
+    p
+        margin: 10px 0
+        color: lighten($textcolor, 15%)
+        font-size: 14px
